@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">P1PopularMovies</string>
+
+
+
+    <string name="popular_movies_url">http://api.themoviedb.org/3/movie/popular?</string>
+    <string name="top_rated_movies_url">http://api.themoviedb.org/3/movie/top_rated?</string>
+    <string name="movie_poster_image_url">http://image.tmdb.org/t/p/w185/</string>
+
+    <string name="popular_param">popular</string>
+    <string name="top_rated_param">top_rated</string>
+
+    <string name="api_key_param">api_key</string>
+    <string name="api_key">YOUR_KEY_HERE</string>
+
 </resources>
