@@ -1,9 +1,15 @@
 package com.example.android.rafao1991.p1popularmovies;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -29,8 +35,30 @@ public class MainActivity extends AppCompatActivity implements Callback {
                         .putExtra("movie", (MovieModel) parent.getAdapter().getItem(position)));
             }
         });
+    }
 
-        new FetchMoviesTask(this, this).execute(getResources().getString(R.string.popular_param));
+    @Override
+    protected void onStart() {
+        super.onStart();
+        refresh();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -38,5 +66,21 @@ public class MainActivity extends AppCompatActivity implements Callback {
         this.movieModelSparseArray = movieModelSparseArray;
         mainAdapter.set(movieModelSparseArray);
         mainAdapter.notifyDataSetChanged();
+    }
+
+    private void refresh() {
+        String param = PreferenceManager.getDefaultSharedPreferences(this).getString(
+                getResources().getString(R.string.pref_order_key),
+                getResources().getString(R.string.popular_param));
+
+        if (isOnline())
+            new FetchMoviesTask(this, this).execute(param);
+    }
+
+    private boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnected();
     }
 }

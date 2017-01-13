@@ -6,20 +6,20 @@ import java.util.List;
 
 public class MovieModel implements Serializable {
 
-    String posterPath;
-    boolean adult;
-    String overview;
-    Date releaseDate;
-    List<Integer> genreIds;
-    int id;
-    String originalTitle;
-    String originalLanguage;
-    String title;
-    String backdropPath;
-    double popularity;
-    int voteCount;
-    boolean video;
-    double voteAverage;
+    private String posterPath;
+    private boolean adult;
+    private String overview;
+    private Date releaseDate;
+    private List<Integer> genreIds;
+    private int id;
+    private String originalTitle;
+    private String originalLanguage;
+    private String title;
+    private String backdropPath;
+    private double popularity;
+    private int voteCount;
+    private boolean video;
+    private double voteAverage;
 
     public boolean isAdult() {
         return adult;

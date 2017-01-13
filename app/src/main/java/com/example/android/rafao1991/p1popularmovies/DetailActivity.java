@@ -21,8 +21,29 @@ public class DetailActivity extends AppCompatActivity {
         textviewTitle.setText(movieModel.getOriginalTitle());
 
         ImageView imageviewMoviePoster = (ImageView) findViewById(R.id.imageview_movie_poster);
+        String url = getResources().getString(R.string.movie_poster_image_url);
+        switch (String.valueOf(getResources().getDisplayMetrics().density)) {
+            case "0.75":
+                url += getResources().getString(R.string.w92);
+                break;
+            case "1.0":
+                url += getResources().getString(R.string.w154);
+                break;
+            case "1.5":
+                url += getResources().getString(R.string.w185);
+                break;
+            case "2.0":
+                url += getResources().getString(R.string.w342);
+                break;
+            case "3.0":
+                url += getResources().getString(R.string.w500);
+                break;
+            case "4.0":
+                url += getResources().getString(R.string.w780);
+                break;
+        }
         Picasso.with(this)
-                .load(getResources().getString(R.string.movie_poster_image_url) + movieModel.getPosterPath())
+                .load(url + movieModel.getPosterPath())
                 .into(imageviewMoviePoster);
 
         TextView textviewDate = (TextView) findViewById(R.id.textview_date);

@@ -14,12 +14,10 @@ public class MainAdapter extends BaseAdapter {
 
     private Context context;
     private SparseArray<MovieModel> movieModelSparseArray;
-    private final String posterUrl;
 
     public MainAdapter(Context context, SparseArray<MovieModel> movieModelSparseArray) {
         this.context = context;
         this.movieModelSparseArray = movieModelSparseArray;
-        this.posterUrl = context.getResources().getString(R.string.movie_poster_image_url);
     }
 
     public void set(SparseArray<MovieModel> movieModelSparseArray) {
@@ -54,8 +52,30 @@ public class MainAdapter extends BaseAdapter {
             imageviewMoviePoster = viewHolder.imageviewMoviePoster;
         }
 
+        String url = context.getResources().getString(R.string.movie_poster_image_url);
+        switch (String.valueOf(context.getResources().getDisplayMetrics().density)) {
+            case "0.75":
+                url += context.getResources().getString(R.string.w92);
+                break;
+            case "1.0":
+                url += context.getResources().getString(R.string.w154);
+                break;
+            case "1.5":
+                url += context.getResources().getString(R.string.w185);
+                break;
+            case "2.0":
+                url += context.getResources().getString(R.string.w342);
+                break;
+            case "3.0":
+                url += context.getResources().getString(R.string.w500);
+                break;
+            case "4.0":
+                url += context.getResources().getString(R.string.w780);
+                break;
+        }
+
         MovieModel item = (MovieModel) getItem(position);
-        Picasso.with(context).load(posterUrl + item.getPosterPath()).into(imageviewMoviePoster);
+        Picasso.with(context).load(url + item.getPosterPath()).into(imageviewMoviePoster);
 
         return view;
     }
