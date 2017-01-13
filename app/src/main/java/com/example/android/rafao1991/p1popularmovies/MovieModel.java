@@ -1,9 +1,10 @@
 package com.example.android.rafao1991.p1popularmovies;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class MovieModel {
+public class MovieModel implements Serializable {
 
     String posterPath;
     boolean adult;

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.android.rafao1991.p1popularmovies.DetailActivity">
+
+    <TextView
+        android:id="@+id/textview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/title_vertical_padding"
+        android:paddingRight="@dimen/title_horizontal_padding"
+        android:paddingBottom="@dimen/title_vertical_padding"
+        android:paddingLeft="@dimen/title_horizontal_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="@color/colorAccent"/>
+
+    <ImageView
+        android:id="@+id/imageview_movie_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_vertical_padding"
+        android:layout_marginRight="@dimen/title_horizontal_padding"
+        android:layout_marginBottom="@dimen/base_vertical_padding"
+        android:layout_marginLeft="@dimen/title_horizontal_padding"
+        android:layout_below="@id/textview_title"/>
+
+    <LinearLayout
+        android:id="@+id/linear_movie_info"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_vertical_padding"
+        android:layout_marginRight="@dimen/base_horizontal_padding"
+        android:layout_marginBottom="@dimen/base_vertical_padding"
+        android:layout_marginLeft="@dimen/base_horizontal_padding"
+        android:layout_below="@id/textview_title"
+        android:layout_toRightOf="@id/imageview_movie_poster">
+
+        <TextView
+            android:id="@+id/textview_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_vertical_padding"
+            android:layout_marginRight="@dimen/base_horizontal_padding"
+            android:layout_marginLeft="@dimen/base_horizontal_padding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/textview_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_vertical_padding"
+            android:layout_marginRight="@dimen/base_horizontal_padding"
+            android:layout_marginLeft="@dimen/base_horizontal_padding"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textview_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview_movie_poster"
+        android:layout_marginTop="@dimen/base_vertical_padding"
+        android:layout_marginRight="@dimen/base_horizontal_padding"
+        android:layout_marginBottom="@dimen/base_vertical_padding"
+        android:layout_marginLeft="@dimen/base_horizontal_padding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/colorPrimary"/>
+
+</RelativeLayout>
